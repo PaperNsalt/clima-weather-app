@@ -1,8 +1,9 @@
 
+
 function HomePage(){
   return(
     <>
-    <h1>Home</h1>
+    <h1 className="font-medium text-[12rem]">Home</h1>
     </>
   );
 }
