@@ -1,5 +1,4 @@
 
-
 *{
   box-sizing: border-box;
   font-optical-sizing: auto;
@@ -12,6 +11,10 @@
 }
 
 :root{
-
+  --ff-primary: "Montserrat", sans-serif;
+  --ff-secondary: "Inter", sans-serif;
 }
 
+header{
+  font-family: var(--ff-primary);
+}
