@@ -18,3 +18,11 @@
 header{
   font-family: var(--ff-primary);
 }
+
+p{
+  font-family: var(--ff-secondary);
+}
+
+h1{
+  font-family: var(--ff-primary);
+}

@@ -43,7 +43,7 @@ function NavBar() {
               <img 
                 src={logo} 
                 alt="ClimaLogo" 
-                className="size-16" 
+                className="size-16 max-[426px]:size-5" 
               />
               <span className="font-medium text-[1.8rem] hidden sm:block tracking-tighter text-black/70">CLIMA</span>
             </Link>
@@ -51,7 +51,7 @@ function NavBar() {
 
           {/* 2. LINKS (Desktop) */}
           {/* justify-between on parent pushes this to the right */}
-          <div className="hidden md:flex gap-2 items-center">
+          <div className="hidden md:flex gap-2 items-center justify-center">
             <NavItem to="/">HOME</NavItem>
             <NavItem to="/about">ABOUT</NavItem>
             <NavItem to="/contact">CONTACT</NavItem>
