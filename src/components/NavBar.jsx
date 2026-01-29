@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from '../assets/ClimaLogo.svg'
+import { BentoIcon, LocationIcon } from "./IconComponent";
 
 const menuVariants = {
   hidden: { opacity: 0, height: 0, overflow: "hidden" },
@@ -32,6 +33,7 @@ function NavBar() {
     </NavLink>
   );
 
+  const newLocal = "flex";
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
