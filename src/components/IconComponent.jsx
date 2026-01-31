@@ -29,3 +29,24 @@ export const BentoIcon = (
     <path d="M14.308 11.5V5.885H19.5q.69 0 1.153.462t.463 1.153v4zM4.5 18.116q-.69 0-1.153-.463T2.885 16.5v-9q0-.69.462-1.153T4.5 5.884h8.808v12.232zm3.596-5.077q.433 0 .736-.304q.302-.302.302-.735t-.302-.736q-.303-.303-.736-.303t-.736.303q-.302.303-.302.736t.302.735t.736.303m6.212 5.078V12.5h6.808v4q0 .69-.463 1.153t-1.153.463z" />
   </svg>
 );
+
+export const SearchIcon = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+);
+
+export const CloseIcon = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
+  </svg>
+);
+
+export const ArrowIcon = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </svg>
+);
