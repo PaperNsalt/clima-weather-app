@@ -33,6 +33,10 @@ form{
   font-family: var(--ff-secondary);
 }
 
+/* section{
+  padding: 16px;
+} */
+
 .lottie-bg {
   position: fixed; /* Keeps it in place when scrolling */
   top: 0;
