@@ -2,10 +2,10 @@
 const API_KEY = import.meta.env.VITE_APP_WEATHER_API_KEY;
 const BASE_URL = "https://api.weatherapi.com/v1";
 
+// src/api/weatherAPI.js
 export async function getWeatherData(city) {
-  // CHANGED: current.json -> forecast.json
-  // ADDED: &days=1 to get hourly data for today
-const url = `${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no&alerts=no`;
+  // CHANGED: aqi=yes (This is required to get air_quality data)
+  const url = `${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=yes&alerts=no`;
   
   const response = await fetch(url);
   

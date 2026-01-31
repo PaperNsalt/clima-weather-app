@@ -36,7 +36,7 @@ function NavBar() {
   const newLocal = "flex";
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <header className="fixed top-0 left-0 w-full z-100 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <nav className="flex justify-between items-center max-w-[90vw] mx-auto py-3 px-4 md:px-8">
           
           {/* 1. LOGO SECTION */}

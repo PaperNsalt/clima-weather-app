@@ -7,11 +7,11 @@ function TodaysForecastComponent({ time, icon, temp }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       // Hover effect: Scale up slightly and become more opaque
-      whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+      whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.6)" }}
       transition={{ type: "spring", stiffness: 300 }}
       
       // Glassmorphism Styles
-      className="flex flex-col items-center justify-between p-6 rounded-3xl bg-white/30 backdrop-blur-lg border border-white/40 shadow-lg cursor-pointer h-full"
+      className="flex flex-col items-center justify-between p-6 rounded-3xl bg-white/50 backdrop-blur-lg border border-white/40 shadow-lg cursor-pointer h-full"
     >
       {/* Time Pill */}
       <p className="py-1 px-4 bg-white/60 rounded-full text-sm font-bold text-slate-600 border border-black/40 mb-2">

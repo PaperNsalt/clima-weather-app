@@ -3,9 +3,12 @@ import { useWeather } from "../hooks/useWeather";
 
 import SearchBar from "../components/SearchBar";
 import TodaysForecastComponent from "../components/TodaysForecastComponent";
+import AirQualityComponent from "../components/AirQualityComponent";
+
 import DailyForecastItem from "../components/DailyForecastItem"; // Import the new component
 import { LocationIcon } from "../components/IconComponent";
 import LottieBackground from "../components/LottieBackground";
+
 
 function HomePage() {
   const { weather, loading, error, fetchWeather } = useWeather();
@@ -31,7 +34,7 @@ function HomePage() {
 
   return (
     <>
-      <section className="mx-auto p-4">
+      <section className="mx-auto">
         {/* Top Search Bar */}
         <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 mx-auto md:mx-0">
           <h3 className="text-xl font-bold mb-4 text-slate-700">
@@ -40,9 +43,9 @@ function HomePage() {
           <SearchBar onSearch={fetchWeather} />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 mx-auto">
           {/* --- LEFT COLUMN: Main Weather Card (Spans 2 columns) --- */}
-          <div className="md:col-span-2 relative flex flex-col p-10 rounded-3xl shadow-xl bg-[#4b92e3]/30 gap-4 min-h-118 justify-between overflow-hidden border border-white/20">
+          <div className="md:col-span-2 relative flex flex-col p-10 rounded-3xl shadow-xl bg-[#4b92e3]/30 gap-4 min-h-121 justify-between overflow-hidden border border-white/20">
             {/* 1. BACKGROUND LAYER */}
             <LottieBackground />
 
@@ -88,9 +91,7 @@ function HomePage() {
                   <div className="flex flex-col gap-6">
                     {/* Location Tag */}
                     <div className="flex flex-row rounded-full bg-white/40 w-fit items-center py-2 px-4 shadow-sm backdrop-blur-md border border-white/30">
-                      <span className="mr-2 text-blue-600">
-                        {LocationIcon}
-                      </span>
+                      <span className="mr-2 text-blue-600">{LocationIcon}</span>
                       <p className="font-semibold text-slate-800">
                         {weather.location.name}, {weather.location.country}
                       </p>
@@ -124,7 +125,8 @@ function HomePage() {
                         {Math.round(weather.current.temp_c)}°
                       </h1>
                       <p className="text-slate-400 font-medium pl-2">
-                        Feels Like {Math.round(weather.current.feelslike_c + 1)}°
+                        Feels Like {Math.round(weather.current.feelslike_c + 1)}
+                        °
                       </p>
                     </div>
 
@@ -167,19 +169,24 @@ function HomePage() {
                 <h3 className="text-xl font-bold mb-6 pl-2 opacity-90">
                   3-Day Forecast
                 </h3>
-                
+
                 <div className="flex flex-col gap-3 justify-center h-full">
                   {weather.forecast.forecastday.map((day, index) => {
                     // Logic for Day Name
                     const dateObj = new Date(day.date);
                     const isToday = index === 0;
-                    
+
                     // If index 0, show "Today", else show Weekday (e.g. Sunday)
-                    const dayName = isToday 
-                      ? "Today" 
-                      : dateObj.toLocaleDateString("en-US", { weekday: "long" });
-                    
-                    const dateShort = dateObj.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+                    const dayName = isToday
+                      ? "Today"
+                      : dateObj.toLocaleDateString("en-US", {
+                          weekday: "long",
+                        });
+
+                    const dateShort = dateObj.toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                    });
 
                     return (
                       <DailyForecastItem
@@ -200,33 +207,42 @@ function HomePage() {
         </div>
 
         {/* --- SECTION 2: TODAY'S HOURLY FORECAST --- */}
-        {weather && (
-          <section className="mt-10 max-w-7xl mx-auto mb-10 p-8 bg-[#4b92e3] rounded-3xl">
-            <h3 className="text-2xl font-bold text-slate-700 mb-6 pl-2">
-              Today's Forecast
-            </h3>
-
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4">
-              {forecastData.map((hour, index) => {
-                const date = new Date(hour.time);
-                const timeString = date.toLocaleTimeString([], {
-                  hour: "numeric",
-                  hour12: true,
-                });
-
-                return (
-                  <TodaysForecastComponent
-                    key={index}
-                    time={timeString}
-                    icon={`https:${hour.condition.icon}`}
-                    temp={Math.round(hour.temp_c)}
-                  />
-                );
-              })}
-            </div>
-          </section>
-        )}
       </section>
+
+      {weather && (
+        <section className="mt-8 max-w-7xl mx-auto mb-8 bg-[#4b92e3] rounded-3xl p-4">
+          <h3 className="text-2xl font-bold text-slate-700 mb-6 pl-2">
+            Today's Forecast
+          </h3>
+
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4 mb-4">
+            {forecastData.map((hour, index) => {
+              const date = new Date(hour.time);
+              const timeString = date.toLocaleTimeString([], {
+                hour: "numeric",
+                hour12: true,
+              });
+
+              return (
+                <TodaysForecastComponent
+                  key={index}
+                  time={timeString}
+                  icon={`https:${hour.condition.icon}`}
+                  temp={Math.round(hour.temp_c)}
+                />
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {weather && (
+        <section className=" max-w-7xl mx-auto mb-10">
+          <div className="bg-[#4b92e3] p-6 rounded-3xl">
+          <AirQualityComponent airQuality={weather.current.air_quality} />
+          </div>
+        </section>
+      )}
     </>
   );
 }
