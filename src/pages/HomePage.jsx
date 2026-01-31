@@ -39,7 +39,7 @@ function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10 mx-auto">
           {/* --- LEFT COLUMN: Main Weather Card (Spans 2 columns) --- */}
-          <div className="md:col-span-2 relative flex flex-col p-10 rounded-3xl shadow-xl bg-[#4b92e3]/30 gap-4 min-h-[500px] justify-between overflow-hidden border border-white/20">
+          <div className="md:col-span-2 relative flex flex-col p-10 rounded-3xl shadow-xl bg-[#4b92e3]/30 gap-4 min-h-118 justify-between overflow-hidden border border-white/20">
             {/* 1. BACKGROUND LAYER */}
             <LottieBackground />
 
@@ -102,8 +102,8 @@ function HomePage() {
                       <h1 className="text-[5rem] leading-none font-bold text-slate-800 tracking-tight">
                         {Math.round(weather.current.temp_c)}°
                       </h1>
-                      <p className="text-slate-600 font-medium pl-2">
-                        Feels Like {Math.round(weather.current.feelslike_c)}°
+                      <p className="text-slate-400 font-medium pl-2">
+                        Feels Like {Math.round(weather.current.feelslike_c + 1)}°
                       </p>
                     </div>
 
