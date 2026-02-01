@@ -35,12 +35,15 @@ function HomePage() {
   return (
     <>
       <section className="mt-10">
-        <div className="grid grid-cols-2 gap-6">
-          <div className="flex justify-center items-center flex-col">
-            <h1 className="text-[4rem] tracking-tighter font-bold leading-16">
-              WELCOME TO <span className="text-[#4b92e3]">CLIMA</span>
+        <div className="grid grid-cols-2 gap-6 bg-[#61bdf2] p-8 rounded-4xl">
+          <div className="flex justify-center items-center flex-col gap-4">
+            <h1 className="text-[4rem] tracking-tighter font-bold leading-20 text-slate-800">
+              WELCOME TO{" "}
+              <span className="text-[#4b92e3] shadow-md px-2 py-1 bg-white/40 backdrop-blur-md border border-white/30 p-3 rounded-2xl">
+                CLIMA
+              </span>
             </h1>
-            <p className="tracking-tight text-base">
+            <p className="tracking-tight text-base text-slate-800">
               CLIMA is a modern weather web application that provides real-time,
               accurate, and easy-to-understand weather information using a
               reliable Weather API. Designed with simplicity and clarity in
@@ -50,7 +53,35 @@ function HomePage() {
           </div>
 
           <div className="flex justify-center items-center">
-            <LottieComponent/>
+            <LottieComponent />
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-10 p-8 bg-[#1d293d] rounded-3xl">
+        <div className="grid grid-cols-3 gap-6">
+          <div className="col-span-2 flex flex-col justify-center items-start p-6 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
+            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">Real-Time Weather Updates</h1>
+            <p className="text-base text-white/60 font-light">CLIMA fetches live weather data directly from a weather API, ensuring that users always receive up-to-date information about their location. From temperature changes to sudden weather conditions, CLIMA keeps you informed instantly.</p>
+          </div>
+
+          <div className="flex flex-col justify-center items-start p-8 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
+          <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
+            Location-Based Forecast
+          </h1>
+          <p className="text-base text-white/60 font-light">By detecting or selecting a location, CLIMA delivers location-specific weather details. This allows users to plan their day better, whether they’re commuting, traveling, or scheduling outdoor activities.</p>
+          </div>
+
+          <div className="flex flex-col justify-center items-start p-8 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
+          <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
+            Short-Term Forecast
+          </h1>
+          <p className="text-base text-white/60 font-light">CLIMA doesn’t just show today’s weather it also provides a forecast for the next few days, giving users an overview of upcoming conditions.</p>
+          </div>
+
+          <div className="col-span-2 flex flex-col justify-center items-start p-6 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
+            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">Powered by Weather API</h1>
+            <p className="text-base text-white/60 font-light">CLIMA is powered by a trusted Weather API, enabling fast and reliable data retrieval. API integration ensures: Accurate weather readings, Consistent data updates, Scalable performance</p>
           </div>
         </div>
       </section>
@@ -153,17 +184,17 @@ function HomePage() {
 
                     <div className="grid grid-cols-2 gap-2">
                       <div className="bg-white/40 backdrop-blur-md border border-white/30 p-3 rounded-2xl flex flex-col items-center">
-                        <span className="text-xs uppercase font-bold opacity-60">
-                          Vis
-                        </span>
+                        <h1 className="text-xs uppercase font-bold opacity-60">
+                          Visibility
+                        </h1>
                         <span className="font-bold">
                           {weather.current.vis_km}km
                         </span>
                       </div>
                       <div className="bg-white/40 backdrop-blur-md border border-white/30 p-3 rounded-2xl flex flex-col items-center">
-                        <span className="text-xs uppercase font-bold opacity-60">
-                          Hum
-                        </span>
+                        <h1 className="text-xs uppercase font-bold opacity-60">
+                          Humidity
+                        </h1>
                         <span className="font-bold">
                           {weather.current.humidity}%
                         </span>
@@ -231,8 +262,8 @@ function HomePage() {
       </section>
 
       {weather && (
-        <section className="mt-8 max-w-7xl mx-auto mb-8 bg-[#4b92e3] rounded-3xl p-4">
-          <h3 className="text-2xl font-bold text-slate-700 mb-6 pl-2">
+        <section className="mt-8 max-w-7xl mx-auto mb-8 bg-[#61bdf2] rounded-3xl p-4">
+          <h3 className="text-[2rem] tracking-tighter font-bold text-slate-800 mb-6 pl-2">
             Today's Forecast
           </h3>
 
@@ -259,7 +290,7 @@ function HomePage() {
 
       {weather && (
         <section className=" max-w-7xl mx-auto mb-10">
-          <div className="bg-[#4b92e3] p-6 rounded-3xl">
+          <div className="bg-[#61bdf2] p-6 rounded-3xl">
             <AirQualityComponent airQuality={weather.current.air_quality} />
           </div>
         </section>
