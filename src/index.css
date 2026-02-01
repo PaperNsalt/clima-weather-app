@@ -33,6 +33,10 @@ form{
   font-family: var(--ff-secondary);
 }
 
+html{
+
+}
+
 /* section{
   padding: 16px;
 } */
@@ -54,4 +58,15 @@ form{
   height: 100%;
   /* This mimics "object-fit: cover" for the animation */
   object-fit: cover; 
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient {
+  background-size: 300% 300%;
+  animation: gradient 12s ease infinite;
 }

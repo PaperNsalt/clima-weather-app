@@ -58,30 +58,54 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="mt-10 p-8 bg-[#1d293d] rounded-3xl">
+      <section
+        className="mt-10 p-8 animated-gradient bg-gradient-to-br from-[#1d293d] via-[#2f5f8f] to-[#61bdf2] rounded-3xl"
+      >
         <div className="grid grid-cols-3 gap-6">
           <div className="col-span-2 flex flex-col justify-center items-start p-6 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
-            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">Real-Time Weather Updates</h1>
-            <p className="text-base text-white/60 font-light">CLIMA fetches live weather data directly from a weather API, ensuring that users always receive up-to-date information about their location. From temperature changes to sudden weather conditions, CLIMA keeps you informed instantly.</p>
+            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
+              Real-Time Weather Updates
+            </h1>
+            <p className="text-base text-white/60 font-light">
+              CLIMA fetches live weather data directly from a weather API,
+              ensuring that users always receive up-to-date information about
+              their location. From temperature changes to sudden weather
+              conditions, CLIMA keeps you informed instantly.
+            </p>
           </div>
 
           <div className="flex flex-col justify-center items-start p-8 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
-          <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
-            Location-Based Forecast
-          </h1>
-          <p className="text-base text-white/60 font-light">By detecting or selecting a location, CLIMA delivers location-specific weather details. This allows users to plan their day better, whether they’re commuting, traveling, or scheduling outdoor activities.</p>
+            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
+              Location-Based Forecast
+            </h1>
+            <p className="text-base text-white/60 font-light">
+              By detecting or selecting a location, CLIMA delivers
+              location-specific weather details. This allows users to plan their
+              day better, whether they’re commuting, traveling, or scheduling
+              outdoor activities.
+            </p>
           </div>
 
           <div className="flex flex-col justify-center items-start p-8 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
-          <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
-            Short-Term Forecast
-          </h1>
-          <p className="text-base text-white/60 font-light">CLIMA doesn’t just show today’s weather it also provides a forecast for the next few days, giving users an overview of upcoming conditions.</p>
+            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
+              Short-Term Forecast
+            </h1>
+            <p className="text-base text-white/60 font-light">
+              CLIMA doesn’t just show today’s weather it also provides a
+              forecast for the next few days, giving users an overview of
+              upcoming conditions.
+            </p>
           </div>
 
           <div className="col-span-2 flex flex-col justify-center items-start p-6 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
-            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">Powered by Weather API</h1>
-            <p className="text-base text-white/60 font-light">CLIMA is powered by a trusted Weather API, enabling fast and reliable data retrieval. API integration ensures: Accurate weather readings, Consistent data updates, Scalable performance</p>
+            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
+              Powered by Weather API
+            </h1>
+            <p className="text-base text-white/60 font-light">
+              CLIMA is powered by a trusted Weather API, enabling fast and
+              reliable data retrieval. API integration ensures: Accurate weather
+              readings, Consistent data updates, Scalable performance
+            </p>
           </div>
         </div>
       </section>
@@ -217,7 +241,7 @@ function HomePage() {
           {/* --- RIGHT COLUMN: 3-Day Forecast (Replaced Wind Div) --- */}
           <div className="flex flex-col gap-4 h-full">
             {weather && (
-              <div className="bg-slate-800 text-white p-6 rounded-3xl h-full flex flex-col shadow-lg overflow-hidden">
+              <div className="animated-gradient bg-linear-to-tr from-[#121a2a] via-[#1d293d] to-[#4fa3d8] text-white p-6 rounded-3xl h-full flex flex-col shadow-lg overflow-hidden">
                 <h3 className="text-xl font-bold mb-6 pl-2 opacity-90">
                   3-Day Forecast
                 </h3>
