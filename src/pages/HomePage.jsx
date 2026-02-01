@@ -8,7 +8,7 @@ import AirQualityComponent from "../components/AirQualityComponent";
 import DailyForecastItem from "../components/DailyForecastItem"; // Import the new component
 import { LocationIcon } from "../components/IconComponent";
 import LottieBackground from "../components/LottieBackground";
-
+import LottieComponent from "../components/LottieComponent";
 
 function HomePage() {
   const { weather, loading, error, fetchWeather } = useWeather();
@@ -34,7 +34,28 @@ function HomePage() {
 
   return (
     <>
-      <section className="mx-auto">
+      <section className="mt-10">
+        <div className="grid grid-cols-2 gap-6">
+          <div className="flex justify-center items-center flex-col">
+            <h1 className="text-[4rem] tracking-tighter font-bold leading-16">
+              WELCOME TO <span className="text-[#4b92e3]">CLIMA</span>
+            </h1>
+            <p className="tracking-tight text-base">
+              CLIMA is a modern weather web application that provides real-time,
+              accurate, and easy-to-understand weather information using a
+              reliable Weather API. Designed with simplicity and clarity in
+              mind, CLIMA helps users stay prepared for daily activities rain or
+              shine.
+            </p>
+          </div>
+
+          <div className="flex justify-center items-center">
+            <LottieComponent/>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto mt-10">
         {/* Top Search Bar */}
         <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 mx-auto md:mx-0">
           <h3 className="text-xl font-bold mb-4 text-slate-700">
@@ -239,7 +260,7 @@ function HomePage() {
       {weather && (
         <section className=" max-w-7xl mx-auto mb-10">
           <div className="bg-[#4b92e3] p-6 rounded-3xl">
-          <AirQualityComponent airQuality={weather.current.air_quality} />
+            <AirQualityComponent airQuality={weather.current.air_quality} />
           </div>
         </section>
       )}
