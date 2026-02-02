@@ -45,9 +45,9 @@ function NavBar() {
               <img 
                 src={logo} 
                 alt="ClimaLogo" 
-                className="size-16 max-[426px]:size-5" 
+                className="size-12 max-[426px]:size-5" 
               />
-              <span className="font-medium text-[1.8rem] hidden sm:block tracking-tighter text-black/70">CLIMA</span>
+              <span className="font-medium text-[1.2rem] hidden sm:block tracking-tighter text-slate-800">CLIMA</span>
             </Link>
           </div>
 

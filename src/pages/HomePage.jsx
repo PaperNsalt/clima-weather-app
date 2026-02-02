@@ -2,16 +2,20 @@ import { useEffect } from "react";
 import { useWeather } from "../hooks/useWeather";
 
 import SearchBar from "../components/SearchBar";
+import SavedCitiesList from "../components/SavedCitiesList";
+import { useSavedLocations } from "../hooks/useSavedLocation";
 import TodaysForecastComponent from "../components/TodaysForecastComponent";
 import AirQualityComponent from "../components/AirQualityComponent";
 
-import DailyForecastItem from "../components/DailyForecastItem"; // Import the new component
-import { LocationIcon } from "../components/IconComponent";
+import DailyForecastItem from "../components/DailyForecastItem";
+import { LocationIcon, HeartIcon } from "../components/IconComponent"; // Added HeartIcon
 import LottieBackground from "../components/LottieBackground";
 import LottieComponent from "../components/LottieComponent";
 
 function HomePage() {
   const { weather, loading, error, fetchWeather } = useWeather();
+  // Initialize the Saved Locations Hook
+  const { savedCities, toggleCity, isSaved } = useSavedLocations();
 
   useEffect(() => {
     // ONLY fetch if weather data is missing (e.g., first ever visit or cache cleared)
@@ -58,9 +62,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section
-        className="mt-10 p-8 animated-gradient bg-gradient-to-br from-[#1d293d] via-[#2f5f8f] to-[#61bdf2] rounded-3xl"
-      >
+      <section className="mt-10 p-8 animated-gradient bg-gradient-to-br from-[#1d293d] via-[#2f5f8f] to-[#61bdf2] rounded-3xl">
         <div className="grid grid-cols-3 gap-6">
           <div className="col-span-2 flex flex-col justify-center items-start p-6 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
             <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
@@ -117,6 +119,15 @@ function HomePage() {
             Change Location
           </h3>
           <SearchBar onSearch={fetchWeather} />
+
+          {/* --- ADDED: SAVED CITIES LIST --- */}
+          <div className="mt-4">
+            <SavedCitiesList
+              cities={savedCities}
+              onSelect={fetchWeather}
+              onDelete={toggleCity} // <--- Add this line!
+            />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 mx-auto">
@@ -127,7 +138,6 @@ function HomePage() {
 
             {/* 2. CONTENT WRAPPER */}
             <div className="relative z-10 flex flex-col gap-4 h-full justify-between">
-              {/* Loading / Error Overlay */}
               {/* Loading Overlay with Spinner */}
               {loading && (
                 <div className="absolute inset-0 bg-white/30 rounded-3xl flex items-center justify-center backdrop-blur-md z-50">
@@ -165,12 +175,32 @@ function HomePage() {
                 <>
                   {/* --- TOP SECTION: Location & Icon --- */}
                   <div className="flex flex-col gap-6">
-                    {/* Location Tag */}
-                    <div className="flex flex-row rounded-full bg-white/40 w-fit items-center py-2 px-4 shadow-sm backdrop-blur-md border border-white/30">
-                      <span className="mr-2 text-blue-600">{LocationIcon}</span>
-                      <p className="font-semibold text-slate-800">
-                        {weather.location.name}, {weather.location.country}
-                      </p>
+                    {/* Location Tag & Save Button Wrapper */}
+                    <div className="flex justify-between items-start">
+                      {/* Location Tag */}
+                      <div className="flex flex-row rounded-full bg-white/40 w-fit items-center py-2 px-4 shadow-sm backdrop-blur-md border border-white/30">
+                        <span className="mr-2 text-blue-600">
+                          {LocationIcon}
+                        </span>
+                        <p className="font-semibold text-slate-800">
+                          {weather.location.name}, {weather.location.country}
+                        </p>
+                      </div>
+
+                      {/* --- ADDED: HEART BUTTON --- */}
+                      <button
+                        onClick={() => toggleCity(weather.location.name)}
+                        className="p-3 bg-white/40 backdrop-blur-md rounded-full hover:bg-white/60 transition-all group border border-white/30 shadow-sm"
+                      >
+                        <HeartIcon
+                          className={`size-6 transition-colors ${
+                            isSaved(weather.location.name)
+                              ? "text-red-500 fill-red-500"
+                              : "text-slate-600 group-hover:text-red-400"
+                          }`}
+                          filled={isSaved(weather.location.name)}
+                        />
+                      </button>
                     </div>
 
                     {/* Main Weather Info */}
@@ -238,7 +268,7 @@ function HomePage() {
             </div>
           </div>
 
-          {/* --- RIGHT COLUMN: 3-Day Forecast (Replaced Wind Div) --- */}
+          {/* --- RIGHT COLUMN: 3-Day Forecast --- */}
           <div className="flex flex-col gap-4 h-full">
             {weather && (
               <div className="animated-gradient bg-linear-to-tr from-[#121a2a] via-[#1d293d] to-[#4fa3d8] text-white p-6 rounded-3xl h-full flex flex-col shadow-lg overflow-hidden">
@@ -248,11 +278,8 @@ function HomePage() {
 
                 <div className="flex flex-col gap-3 justify-center h-full">
                   {weather.forecast.forecastday.map((day, index) => {
-                    // Logic for Day Name
                     const dateObj = new Date(day.date);
                     const isToday = index === 0;
-
-                    // If index 0, show "Today", else show Weekday (e.g. Sunday)
                     const dayName = isToday
                       ? "Today"
                       : dateObj.toLocaleDateString("en-US", {
@@ -281,10 +308,9 @@ function HomePage() {
             )}
           </div>
         </div>
-
-        {/* --- SECTION 2: TODAY'S HOURLY FORECAST --- */}
       </section>
 
+      {/* --- SECTION 2: TODAY'S HOURLY FORECAST --- */}
       {weather && (
         <section className="mt-8 max-w-7xl mx-auto mb-8 bg-[#61bdf2] rounded-3xl p-4">
           <h3 className="text-[2rem] tracking-tighter font-bold text-slate-800 mb-6 pl-2">
@@ -312,6 +338,7 @@ function HomePage() {
         </section>
       )}
 
+      {/* --- SECTION 3: AIR QUALITY --- */}
       {weather && (
         <section className=" max-w-7xl mx-auto mb-10">
           <div className="bg-[#61bdf2] p-6 rounded-3xl">
