@@ -12,6 +12,8 @@ import { LocationIcon, HeartIcon } from "../components/IconComponent"; // Added 
 import LottieBackground from "../components/LottieBackground";
 import LottieComponent from "../components/LottieComponent";
 
+import WeatherMap from "../components/WeatherMap";
+
 function HomePage() {
   const { weather, loading, error, fetchWeather } = useWeather();
   // Initialize the Saved Locations Hook
@@ -344,6 +346,26 @@ function HomePage() {
           <div className="bg-[#61bdf2] p-6 rounded-3xl">
             <AirQualityComponent airQuality={weather.current.air_quality} />
           </div>
+        </section>
+      )}
+
+      {weather && (
+        <section className="mt-8 max-w-7xl mx-auto mb-8">
+          {/* Section Header */}
+          <div className="justify-start items-start mb-6 px-2 flex flex-col ">
+            <div className="flex flex-row justify-center items-center gap-4">
+            <h3 className="text-[2rem] tracking-tighter text-center font-bold text-slate-800">
+              Weather Map
+            </h3>
+            <span className="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              Live
+            </span>
+            </div>
+            <p className="text-[.8rem] text-gray-500">Powered by openweatherapi.org</p>
+          </div>
+
+          {/* The Map Component */}
+          <WeatherMap lat={weather.location.lat} lon={weather.location.lon} />
         </section>
       )}
     </>
