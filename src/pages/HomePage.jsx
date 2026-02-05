@@ -53,7 +53,6 @@ function HomePage() {
 
   const forecastData = getForecastHours();
 
-  // --- Handlers ---
   const handleRefresh = () => {
     if (weather?.location?.name) {
       fetchWeather(weather.location.name);
