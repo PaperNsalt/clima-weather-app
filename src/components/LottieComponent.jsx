@@ -1,17 +1,17 @@
 import Lottie from "lottie-react";
 import SharpUmbrellaAnimation from '../assets/lottie/Sharp Umbrella.json';
 
-function LottieComponent({
-  width = 500,
-  height = 500
-}) {
-  return(
-    <Lottie
-    animationData={SharpUmbrellaAnimation}
-    loop={true}
-    autoPlay={true}
-    style={{ width: width, height: height }}
-    />
+function LottieComponent({ className }) {
+  return (
+    <div className={`w-full h-auto flex justify-center items-center ${className}`}>
+      <Lottie
+        animationData={SharpUmbrellaAnimation}
+        loop={true}
+        autoPlay={true}
+        // This ensures the animation scales responsively
+        style={{ width: "100%", height: "auto", maxWidth: "500px" }} 
+      />
+    </div>
   );
 }
 

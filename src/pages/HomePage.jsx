@@ -62,90 +62,95 @@ function HomePage() {
 
   return (
     <>
-      <section className="mt-10">
-        <div className="grid grid-cols-2 gap-6 bg-[#61bdf2] p-8 rounded-4xl">
-          <div className="flex justify-center items-center flex-col gap-4">
-            <h1 className="text-[4rem] tracking-tighter font-bold leading-20 text-slate-800">
-              WELCOME TO{" "}
-              <span className="text-[#4b92e3] shadow-md px-2 py-1 bg-white/40 backdrop-blur-md border border-white/30 p-3 rounded-2xl">
-                CLIMA
-              </span>
-            </h1>
-            <p className="tracking-tight text-base text-slate-800">
-              CLIMA is a modern weather web application that provides real-time,
-              accurate, and easy-to-understand weather information using a
-              reliable Weather API. Designed with simplicity and clarity in
-              mind, CLIMA helps users stay prepared for daily activities rain or
-              shine.
-            </p>
-          </div>
+      <section className="mt-6 md:mt-10 px-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 bg-[#61bdf2] p-8 md:p-12 lg:p-16 rounded-[2rem] md:rounded-[3rem] shadow-lg hover:shadow-xl transition-shadow duration-300 items-center">
 
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center w-full max-w-[280px] md:max-w-full mx-auto">
             <LottieComponent />
           </div>
-        </div>
-      </section>
 
-      {/* ... (Features Section omitted for brevity, keeping it same as before) ... */}
-      <section className="mt-10 p-8 animated-gradient bg-gradient-to-br from-[#1d293d] via-[#2f5f8f] to-[#61bdf2] rounded-3xl">
-        <div className="grid grid-cols-3 gap-6">
-          <div className="col-span-2 flex flex-col justify-center items-start p-6 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
-            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
-              Real-Time Weather Updates
+          <div className="flex flex-col gap-4 text-center md:text-left">
+            <h1 className="text-2xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+              WELCOME TO <span className="text-white drop-shadow-md">CLIMA</span>
             </h1>
-            <p className="text-base text-white/60 font-light">
-              CLIMA fetches live weather data directly from a weather API,
-              ensuring that users always receive up-to-date information about
-              their location. From temperature changes to sudden weather
-              conditions, CLIMA keeps you informed instantly.
-            </p>
-          </div>
 
-          <div className="flex flex-col justify-center items-start p-8 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
-            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
-              Location-Based Forecast
-            </h1>
-            <p className="text-base text-white/60 font-light">
-              By detecting or selecting a location, CLIMA delivers
-              location-specific weather details. This allows users to plan their
-              day better, whether they’re commuting, traveling, or scheduling
-              outdoor activities.
-            </p>
-          </div>
-
-          <div className="flex flex-col justify-center items-start p-8 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
-            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
-              Short-Term Forecast
-            </h1>
-            <p className="text-base text-white/60 font-light">
-              CLIMA doesn’t just show today’s weather it also provides a
-              forecast for the next few days, giving users an overview of
-              upcoming conditions.
-            </p>
-          </div>
-
-          <div className="col-span-2 flex flex-col justify-center items-start p-6 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
-            <h1 className="text-[1.4rem] tracking-tight font-bold text-white">
-              Powered by Weather API
-            </h1>
-            <p className="text-base text-white/60 font-light">
-              CLIMA is powered by a trusted Weather API, enabling fast and
-              reliable data retrieval. API integration ensures: Accurate weather
-              readings, Consistent data updates, Scalable performance
+            <p className="text-[.7rem] md:text-lg leading-relaxed text-slate-800 font-medium max-w-prose mx-auto md:mx-0 opacity-90">
+              CLIMA is a modern weather web application that provides real-time,
+              accurate, and easy-to-understand weather information. Designed
+              with simplicity in mind, we help you stay prepared for daily
+              activities, rain or shine.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto mt-10">
+
+      <section className="mt-6 md:mt-10 px-4 max-w-7xl mx-auto">
+        <div className="p-6 md:p-10 animated-gradient bg-gradient-to-br from-[#1d293d] via-[#2f5f8f] to-[#61bdf2] rounded-[2rem] shadow-xl">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+
+            <div className="md:col-span-2 flex flex-col justify-center items-start p-6 md:p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl hover:bg-white/15 transition-colors duration-300">
+              <h1 className="text-xl md:text-2xl tracking-tight font-bold text-white mb-2">
+                Real-Time Weather Updates
+              </h1>
+              <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
+                CLIMA fetches live weather data directly from a weather API,
+                ensuring that users always receive up-to-date information about
+                their location. From temperature changes to sudden weather
+                conditions, CLIMA keeps you informed instantly.
+              </p>
+            </div>
+
+
+            <div className="flex flex-col justify-center items-start p-6 md:p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl hover:bg-white/15 transition-colors duration-300">
+              <h1 className="text-xl md:text-2xl tracking-tight font-bold text-white mb-2">
+                Location-Based
+              </h1>
+              <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
+                By detecting or selecting a location, CLIMA delivers
+                location-specific details to help you plan your commute, travel,
+                or outdoor activities.
+              </p>
+            </div>
+
+
+            <div className="flex flex-col justify-center items-start p-6 md:p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl hover:bg-white/15 transition-colors duration-300">
+              <h1 className="text-xl md:text-2xl tracking-tight font-bold text-white mb-2">
+                Short-Term Forecast
+              </h1>
+              <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
+                CLIMA doesn’t just show today’s weather—it also provides a
+                forecast for the next few days, giving users a clear overview of
+                upcoming conditions.
+              </p>
+            </div>
+
+
+            <div className="md:col-span-2 flex flex-col justify-center items-start p-6 md:p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl hover:bg-white/15 transition-colors duration-300">
+              <h1 className="text-xl md:text-2xl tracking-tight font-bold text-white mb-2">
+                Powered by Weather API
+              </h1>
+              <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
+                CLIMA is powered by a trusted Weather API, enabling fast and
+                reliable data retrieval. API integration ensures accurate
+                weather readings, consistent data updates, and scalable
+                performance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto mt-6 md:mt-10 px-4 max-w-7xl">
         {/* Top Search Bar */}
-        <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 mx-auto md:mx-0">
-          <h3 className="text-xl font-bold mb-4 text-slate-700">
+        <div className="bg-white p-4 md:p-6 rounded-3xl shadow-sm border border-slate-100 w-full">
+          <h3 className="text-lg md:text-xl font-bold mb-4 text-slate-700">
             Change Location
           </h3>
           <SearchBar onSearch={fetchWeather} />
 
-          <div className="mt-4">
+          <div className="mt-4 overflow-x-auto pb-2 scrollbar-hide">
             <SavedCitiesList
               cities={savedCities}
               onSelect={fetchWeather}
@@ -154,137 +159,135 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 md:mt-10">
           {/* --- LEFT COLUMN: Main Weather Card --- */}
-          <div className="md:col-span-2 relative flex flex-col p-10 rounded-3xl shadow-xl bg-[#4b92e3]/30 gap-4 min-h-121 justify-between overflow-hidden border border-white/20">
-            {/* 1. BACKGROUND LAYER */}
-            <LottieBackground />
+          <div className="lg:col-span-2 relative flex flex-col p-6 md:p-10 rounded-3xl shadow-xl overflow-hidden border border-white/20">
+            <div className="absolute inset-0 z-0 bg-blue-400">
+              <LottieBackground />
+              {/* Subtle gradient to ensure white text pops even if animation is bright */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none" />
+            </div>
 
-            {/* 2. CONTENT WRAPPER */}
-            <div className="relative z-10 flex flex-col gap-4 h-full justify-between">
-              {/* Loading Overlay */}
+
+            <div className="relative z-10 flex flex-col h-full justify-between">
+
               {loading && (
-                <div className="absolute inset-0 bg-white/30 rounded-3xl flex items-center justify-center backdrop-blur-md z-50 transition-all duration-300">
-                  {/* Note: We keep this overlay, but we also animate the button below */}
+                <div className="absolute inset-0 bg-white/30 rounded-3xl flex items-center justify-center backdrop-blur-md z-50">
+
                 </div>
               )}
 
               {error && (
-                <div className="absolute inset-0 bg-red-100/80 rounded-3xl flex items-center justify-center z-50">
+                <div className="absolute inset-0 bg-red-100/90 rounded-3xl flex items-center justify-center z-50 p-4 text-center">
                   <p className="text-red-600 font-bold">{error}</p>
                 </div>
               )}
 
               {weather && (
                 <>
-                  {/* --- TOP SECTION: Location & Icons --- */}
+
                   <div className="flex flex-col gap-6">
-                    <div className="flex justify-between items-start">
-                      {/* Location Tag */}
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+
                       <div className="flex flex-row rounded-full bg-white/40 w-fit items-center py-2 px-4 shadow-sm backdrop-blur-md border border-white/30">
                         <span className="mr-2 text-blue-600">
                           {LocationIcon}
                         </span>
-                        <p className="font-semibold text-slate-800">
+                        <p className="font-semibold text-slate-800 text-sm md:text-base truncate max-w-[200px] md:max-w-none">
                           {weather.location.name}, {weather.location.country}
                         </p>
                       </div>
 
-                      {/* --- ACTION BUTTONS (Save & Reload) --- */}
-                      <div className="flex items-center gap-2">
-                        {/* 1. RELOAD BUTTON (New) */}
+  
+                      <div className="flex items-center gap-2 self-end md:self-auto">
                         <button
                           onClick={handleRefresh}
                           disabled={loading}
-                          title="Refresh Forecast"
-                          className="p-3 bg-white/40 backdrop-blur-md rounded-full hover:bg-white/60 hover:scale-105 transition-all group border border-white/30 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="p-3 bg-white/40 backdrop-blur-md rounded-full hover:bg-white/60 transition-all border border-white/30 shadow-sm"
                         >
                           <RefreshIcon
-                            className={`w-6 h-6 text-slate-700 transition-all duration-700 ease-in-out ${
-                              loading
-                                ? "animate-spin"
-                                : "group-hover:rotate-180"
-                            }`}
+                            className={`w-5 h-5 md:w-6 md:h-6 text-slate-700 ${loading ? "animate-spin" : ""}`}
                           />
                         </button>
 
-                        {/* 2. HEART BUTTON */}
                         <button
                           onClick={() => toggleCity(weather.location.name)}
-                          title={
-                            isSaved(weather.location.name)
-                              ? "Remove from saved"
-                              : "Save location"
-                          }
-                          className="p-3 bg-white/40 backdrop-blur-md rounded-full hover:bg-white/60 hover:scale-105 transition-all group border border-white/30 shadow-sm"
+                          className="p-3 bg-white/40 backdrop-blur-md rounded-full hover:bg-white/60 transition-all border border-white/30 shadow-sm"
                         >
                           <HeartIcon
-                            className={`size-6 transition-colors ${
+                            className={`w-5 h-5 md:w-6 md:h-6 transition-colors ${
                               isSaved(weather.location.name)
                                 ? "text-red-500 fill-red-500"
-                                : "text-slate-600 group-hover:text-red-400"
+                                : "text-slate-600"
                             }`}
-                            filled={isSaved(weather.location.name)}
                           />
                         </button>
                       </div>
                     </div>
 
-                    {/* Main Weather Info */}
-                    <div className="flex justify-between items-center">
+                    {/* Main Weather Info (Condition Text) */}
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-2 md:mt-0">
                       <div>
-                        <h1 className="text-[3rem] tracking-tighter font-bold leading-none text-slate-800 drop-shadow-sm">
+                        <h1 className="text-4xl md:text-[3rem] tracking-tighter font-bold leading-none text-slate-800 drop-shadow-sm">
                           Weather
                         </h1>
-                        <p className="text-slate-700 text-xl capitalize font-medium mt-1">
+                        <p className="text-slate-700 text-lg md:text-xl capitalize font-medium mt-1">
                           {weather.current.condition.text}
                         </p>
                       </div>
 
-                      <div className="flex items-center justify-center">
+                      <div className="self-center md:self-auto mt-4 md:mt-0">
                         <img
                           src={`https:${weather.current.condition.icon}`}
                           alt="Weather Icon"
-                          className="w-32 h-32 object-contain drop-shadow-2xl"
+                          className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-2xl"
                         />
                       </div>
                     </div>
                   </div>
 
-                  {/* --- BOTTOM SECTION: Stats Row --- */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto items-end">
-                    <div className="flex flex-col">
-                      <h1 className="text-[5rem] leading-none font-bold text-slate-800 tracking-tight">
+                  {/* --- BOTTOM SECTION: Stats Row --- 
+                (Switched to WHITE text - "Ocean" area) 
+            */}
+                  <div className="flex flex-col md:grid md:grid-cols-2 gap-6 mt-auto items-end w-full">
+                    {/* Temperature */}
+                    <div className="flex flex-col self-start md:self-end">
+                      <h1 className="text-6xl md:text-[5rem] leading-none font-bold text-white tracking-tight drop-shadow-lg">
                         {Math.round(weather.current.temp_c)}°
                       </h1>
-                      <p className="text-slate-400 font-medium pl-2">
-                        Feels Like {Math.round(weather.current.feelslike_c + 1)}
-                        °
+                      <p className="text-white/90 font-medium pl-1 md:pl-2 text-sm md:text-base drop-shadow-md">
+                        Feels Like {Math.round(weather.current.feelslike_c)}°
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2">
-                      <div className="bg-white/40 backdrop-blur-md border border-white/30 p-3 rounded-2xl flex flex-col items-center">
-                        <h1 className="text-xs uppercase font-bold opacity-60">
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-2 gap-2 w-full">
+                      {/* Visibility */}
+                      <div className="bg-white/20 backdrop-blur-md border border-white/30 p-3 rounded-2xl flex flex-col items-center justify-center text-white shadow-sm">
+                        <h1 className="text-[10px] md:text-xs uppercase font-bold opacity-80">
                           Visibility
                         </h1>
-                        <span className="font-bold">
+                        <span className="font-bold text-sm md:text-base">
                           {weather.current.vis_km}km
                         </span>
                       </div>
-                      <div className="bg-white/40 backdrop-blur-md border border-white/30 p-3 rounded-2xl flex flex-col items-center">
-                        <h1 className="text-xs uppercase font-bold opacity-60">
+
+                      {/* Humidity */}
+                      <div className="bg-white/20 backdrop-blur-md border border-white/30 p-3 rounded-2xl flex flex-col items-center justify-center text-white shadow-sm">
+                        <h1 className="text-[10px] md:text-xs uppercase font-bold opacity-80">
                           Humidity
                         </h1>
-                        <span className="font-bold">
+                        <span className="font-bold text-sm md:text-base">
                           {weather.current.humidity}%
                         </span>
                       </div>
-                      <div className="bg-white/40 backdrop-blur-md border border-white/30 p-3 rounded-2xl col-span-2 flex flex-row justify-between px-6 items-center">
-                        <span className="text-xs uppercase font-bold opacity-60">
+
+                      {/* Wind */}
+                      <div className="bg-white/20 backdrop-blur-md border border-white/30 p-3 rounded-2xl col-span-2 flex flex-row justify-between px-6 items-center text-white shadow-sm">
+                        <span className="text-[10px] md:text-xs uppercase font-bold opacity-80">
                           Wind
                         </span>
-                        <span className="font-bold">
+                        <span className="font-bold text-sm md:text-base">
                           {weather.current.wind_kph} km/h
                         </span>
                       </div>
@@ -296,10 +299,10 @@ function HomePage() {
           </div>
 
           {/* --- RIGHT COLUMN: 3-Day Forecast --- */}
-          <div className="flex flex-col gap-4 h-full">
+          <div className="flex flex-col h-full">
             {weather && (
-              <div className="animated-gradient bg-linear-to-tr from-[#121a2a] via-[#1d293d] to-[#4fa3d8] text-white p-6 rounded-3xl h-full flex flex-col shadow-lg overflow-hidden">
-                <h3 className="text-xl font-bold mb-6 pl-2 opacity-90">
+              <div className="animated-gradient bg-linear-to-tr from-[#121a2a] via-[#1d293d] to-[#4fa3d8] text-white p-6 rounded-3xl h-full flex flex-col shadow-lg">
+                <h3 className="text-lg md:text-xl font-bold mb-6 pl-2 opacity-90">
                   3-Day Forecast
                 </h3>
 
@@ -312,7 +315,6 @@ function HomePage() {
                       : dateObj.toLocaleDateString("en-US", {
                           weekday: "long",
                         });
-
                     const dateShort = dateObj.toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
@@ -339,12 +341,15 @@ function HomePage() {
 
       {/* --- SECTION 2: TODAY'S HOURLY FORECAST --- */}
       {weather && (
-        <section className="mt-8 max-w-7xl mx-auto mb-8 bg-[#61bdf2] rounded-3xl p-4">
-          <h3 className="text-[2rem] tracking-tighter font-bold text-slate-800 mb-6 pl-2">
+        <section className="max-[426px]:ml-4 max-[426px]:mr-4 mt-6 md:mt-10 mx-auto max-w-7xl mb-8 bg-[#61bdf2] rounded-3xl p-4 md:p-8 shadow-md overflow-hidden">
+          <h3 className="text-xl md:text-2xl tracking-tight font-bold text-slate-900/80 mb-6 pl-2">
             Today's Forecast
           </h3>
 
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4 mb-4">
+          {/* MOBILE: Flex row + Horizontal Scroll 
+      DESKTOP: Grid layout
+    */}
+          <div className="flex flex-row overflow-x-auto pb-6 gap-4 md:grid md:grid-cols-[repeat(auto-fill,minmax(140px,1fr))] md:overflow-visible md:pb-0 snap-x scrollbar-hide">
             {forecastData.map((hour, index) => {
               const date = new Date(hour.time);
               const timeString = date.toLocaleTimeString([], {
@@ -353,12 +358,18 @@ function HomePage() {
               });
 
               return (
-                <TodaysForecastComponent
+                // min-w-[130px] ensures cards don't get squished on mobile
+                <div
                   key={index}
-                  time={timeString}
-                  icon={`https:${hour.condition.icon}`}
-                  temp={Math.round(hour.temp_c)}
-                />
+                  className="min-w-[130px] md:min-w-0 snap-start h-full"
+                >
+                  <TodaysForecastComponent
+                    time={timeString}
+                    icon={`https:${hour.condition.icon}`}
+                    temp={Math.round(hour.temp_c)}
+                    index={index} // Pass index for staggered animation
+                  />
+                </div>
               );
             })}
           </div>
@@ -367,7 +378,7 @@ function HomePage() {
 
       {/* --- SECTION 3: AIR QUALITY --- */}
       {weather && (
-        <section className=" max-w-7xl mx-auto mb-10">
+        <section className="max-w-7xl mx-auto mb-10 max-[426px]:ml-4 max-[426px]:mr-4">
           <div className="bg-[#61bdf2] p-6 rounded-3xl">
             <AirQualityComponent airQuality={weather.current.air_quality} />
           </div>
@@ -375,19 +386,30 @@ function HomePage() {
       )}
 
       {weather && (
-        <section className="mt-8 max-w-7xl mx-auto mb-8">
-          {/* Section Header */}
-          <div className="justify-start items-start mb-6 px-2 flex flex-col ">
-            <div className="flex flex-row justify-center items-center gap-4">
-              <h3 className="text-[2rem] tracking-tighter text-center font-bold text-slate-800">
-                Weather Map
-              </h3>
-              <span className="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                Live
-              </span>
+        <section className="mt-6 md:mt-12 max-w-7xl mx-auto mb-8 px-4">
+          {/* Section Header - Centered on mobile, Left on desktop */}
+          <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+            <div className="flex flex-col items-center md:items-start">
+              <div className="flex items-center gap-3">
+                <h3 className="text-2xl md:text-3xl tracking-tight font-bold text-slate-800">
+                  Weather Map
+                </h3>
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                </span>
+                <span className="bg-blue-50 text-blue-600 text-[10px] md:text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wider border border-blue-100">
+                  Live
+                </span>
+              </div>
+              <p className="text-sm text-slate-500 mt-1">
+                Real-time precipitation, clouds, and temperature data.
+              </p>
             </div>
-            <p className="text-[.8rem] text-gray-500">
-              Powered by openweatherapi.org
+
+            {/* Attribution - Subtle on the right */}
+            <p className="text-[10px] text-gray-400 font-medium bg-gray-50 px-3 py-1 rounded-full border border-gray-100">
+              Powered by OpenWeatherMap
             </p>
           </div>
 
