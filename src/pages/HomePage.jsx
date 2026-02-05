@@ -225,7 +225,7 @@ function HomePage() {
                       </div>
                     </div>
 
-                    {/* Main Weather Info (Condition Text) */}
+                    {/* Main Weather Info */}
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-2 md:mt-0">
                       <div>
                         <h1 className="text-4xl md:text-[3rem] tracking-tighter font-bold leading-none text-slate-800 drop-shadow-sm">
@@ -246,11 +246,8 @@ function HomePage() {
                     </div>
                   </div>
 
-                  {/* --- BOTTOM SECTION: Stats Row --- 
-                (Switched to WHITE text - "Ocean" area) 
-            */}
                   <div className="flex flex-col md:grid md:grid-cols-2 gap-6 mt-auto items-end w-full">
-                    {/* Temperature */}
+                    
                     <div className="flex flex-col self-start md:self-end">
                       <h1 className="text-6xl md:text-[5rem] leading-none font-bold text-white tracking-tight drop-shadow-lg">
                         {Math.round(weather.current.temp_c)}°
@@ -260,7 +257,7 @@ function HomePage() {
                       </p>
                     </div>
 
-                    {/* Stats Grid */}
+                
                     <div className="grid grid-cols-2 gap-2 w-full">
                       {/* Visibility */}
                       <div className="bg-white/20 backdrop-blur-md border border-white/30 p-3 rounded-2xl flex flex-col items-center justify-center text-white shadow-sm">
@@ -346,9 +343,6 @@ function HomePage() {
             Today's Forecast
           </h3>
 
-          {/* MOBILE: Flex row + Horizontal Scroll 
-      DESKTOP: Grid layout
-    */}
           <div className="flex flex-row overflow-x-auto pb-6 gap-4 md:grid md:grid-cols-[repeat(auto-fill,minmax(140px,1fr))] md:overflow-visible md:pb-0 snap-x scrollbar-hide">
             {forecastData.map((hour, index) => {
               const date = new Date(hour.time);
@@ -358,7 +352,7 @@ function HomePage() {
               });
 
               return (
-                // min-w-[130px] ensures cards don't get squished on mobile
+              
                 <div
                   key={index}
                   className="min-w-[130px] md:min-w-0 snap-start h-full"
@@ -367,7 +361,7 @@ function HomePage() {
                     time={timeString}
                     icon={`https:${hour.condition.icon}`}
                     temp={Math.round(hour.temp_c)}
-                    index={index} // Pass index for staggered animation
+                    index={index}
                   />
                 </div>
               );
@@ -387,7 +381,6 @@ function HomePage() {
 
       {weather && (
         <section className="mt-6 md:mt-12 max-w-7xl mx-auto mb-8 px-4">
-          {/* Section Header - Centered on mobile, Left on desktop */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
             <div className="flex flex-col items-center md:items-start">
               <div className="flex items-center gap-3">
@@ -407,13 +400,13 @@ function HomePage() {
               </p>
             </div>
 
-            {/* Attribution - Subtle on the right */}
+           
             <p className="text-[10px] text-gray-400 font-medium bg-gray-50 px-3 py-1 rounded-full border border-gray-100">
               Powered by OpenWeatherMap
             </p>
           </div>
 
-          {/* The Map Component */}
+  
           <WeatherMap lat={weather.location.lat} lon={weather.location.lon} />
         </section>
       )}
