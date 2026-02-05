@@ -8,25 +8,40 @@ import TodaysForecastComponent from "../components/TodaysForecastComponent";
 import AirQualityComponent from "../components/AirQualityComponent";
 
 import DailyForecastItem from "../components/DailyForecastItem";
-import { LocationIcon, HeartIcon } from "../components/IconComponent"; // Added HeartIcon
+import { LocationIcon, HeartIcon } from "../components/IconComponent";
 import LottieBackground from "../components/LottieBackground";
 import LottieComponent from "../components/LottieComponent";
 
 import WeatherMap from "../components/WeatherMap";
 
+// --- New Refresh Icon Component ---
+const RefreshIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={2}
+    stroke="currentColor"
+    className={className}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+    />
+  </svg>
+);
+
 function HomePage() {
   const { weather, loading, error, fetchWeather } = useWeather();
-  // Initialize the Saved Locations Hook
   const { savedCities, toggleCity, isSaved } = useSavedLocations();
 
   useEffect(() => {
-    // ONLY fetch if weather data is missing (e.g., first ever visit or cache cleared)
     if (!weather) {
       fetchWeather("Legazpi");
     }
-  }, []); // Empty dependency array ensures this only runs on mount
+  }, []);
 
-  // Logic: Filter for specific times (6, 9, 12, 15, 18, 21)
   const getForecastHours = () => {
     if (!weather) return [];
     const targetHours = [6, 9, 12, 15, 18, 21];
@@ -37,6 +52,13 @@ function HomePage() {
   };
 
   const forecastData = getForecastHours();
+
+  // --- Handlers ---
+  const handleRefresh = () => {
+    if (weather?.location?.name) {
+      fetchWeather(weather.location.name);
+    }
+  };
 
   return (
     <>
@@ -64,6 +86,7 @@ function HomePage() {
         </div>
       </section>
 
+      {/* ... (Features Section omitted for brevity, keeping it same as before) ... */}
       <section className="mt-10 p-8 animated-gradient bg-gradient-to-br from-[#1d293d] via-[#2f5f8f] to-[#61bdf2] rounded-3xl">
         <div className="grid grid-cols-3 gap-6">
           <div className="col-span-2 flex flex-col justify-center items-start p-6 bg-white/16 backdrop-blur-md border border-white/30 rounded-3xl">
@@ -122,47 +145,27 @@ function HomePage() {
           </h3>
           <SearchBar onSearch={fetchWeather} />
 
-          {/* --- ADDED: SAVED CITIES LIST --- */}
           <div className="mt-4">
             <SavedCitiesList
               cities={savedCities}
               onSelect={fetchWeather}
-              onDelete={toggleCity} // <--- Add this line!
+              onDelete={toggleCity}
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 mx-auto">
-          {/* --- LEFT COLUMN: Main Weather Card (Spans 2 columns) --- */}
+          {/* --- LEFT COLUMN: Main Weather Card --- */}
           <div className="md:col-span-2 relative flex flex-col p-10 rounded-3xl shadow-xl bg-[#4b92e3]/30 gap-4 min-h-121 justify-between overflow-hidden border border-white/20">
             {/* 1. BACKGROUND LAYER */}
             <LottieBackground />
 
             {/* 2. CONTENT WRAPPER */}
             <div className="relative z-10 flex flex-col gap-4 h-full justify-between">
-              {/* Loading Overlay with Spinner */}
+              {/* Loading Overlay */}
               {loading && (
-                <div className="absolute inset-0 bg-white/30 rounded-3xl flex items-center justify-center backdrop-blur-md z-50">
-                  <svg
-                    className="animate-spin h-12 w-12 text-blue-600"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
+                <div className="absolute inset-0 bg-white/30 rounded-3xl flex items-center justify-center backdrop-blur-md z-50 transition-all duration-300">
+                  {/* Note: We keep this overlay, but we also animate the button below */}
                 </div>
               )}
 
@@ -172,12 +175,10 @@ function HomePage() {
                 </div>
               )}
 
-              {/* Weather Content */}
               {weather && (
                 <>
-                  {/* --- TOP SECTION: Location & Icon --- */}
+                  {/* --- TOP SECTION: Location & Icons --- */}
                   <div className="flex flex-col gap-6">
-                    {/* Location Tag & Save Button Wrapper */}
                     <div className="flex justify-between items-start">
                       {/* Location Tag */}
                       <div className="flex flex-row rounded-full bg-white/40 w-fit items-center py-2 px-4 shadow-sm backdrop-blur-md border border-white/30">
@@ -189,20 +190,44 @@ function HomePage() {
                         </p>
                       </div>
 
-                      {/* --- ADDED: HEART BUTTON --- */}
-                      <button
-                        onClick={() => toggleCity(weather.location.name)}
-                        className="p-3 bg-white/40 backdrop-blur-md rounded-full hover:bg-white/60 transition-all group border border-white/30 shadow-sm"
-                      >
-                        <HeartIcon
-                          className={`size-6 transition-colors ${
+                      {/* --- ACTION BUTTONS (Save & Reload) --- */}
+                      <div className="flex items-center gap-2">
+                        {/* 1. RELOAD BUTTON (New) */}
+                        <button
+                          onClick={handleRefresh}
+                          disabled={loading}
+                          title="Refresh Forecast"
+                          className="p-3 bg-white/40 backdrop-blur-md rounded-full hover:bg-white/60 hover:scale-105 transition-all group border border-white/30 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          <RefreshIcon
+                            className={`w-6 h-6 text-slate-700 transition-all duration-700 ease-in-out ${
+                              loading
+                                ? "animate-spin"
+                                : "group-hover:rotate-180"
+                            }`}
+                          />
+                        </button>
+
+                        {/* 2. HEART BUTTON */}
+                        <button
+                          onClick={() => toggleCity(weather.location.name)}
+                          title={
                             isSaved(weather.location.name)
-                              ? "text-red-500 fill-red-500"
-                              : "text-slate-600 group-hover:text-red-400"
-                          }`}
-                          filled={isSaved(weather.location.name)}
-                        />
-                      </button>
+                              ? "Remove from saved"
+                              : "Save location"
+                          }
+                          className="p-3 bg-white/40 backdrop-blur-md rounded-full hover:bg-white/60 hover:scale-105 transition-all group border border-white/30 shadow-sm"
+                        >
+                          <HeartIcon
+                            className={`size-6 transition-colors ${
+                              isSaved(weather.location.name)
+                                ? "text-red-500 fill-red-500"
+                                : "text-slate-600 group-hover:text-red-400"
+                            }`}
+                            filled={isSaved(weather.location.name)}
+                          />
+                        </button>
+                      </div>
                     </div>
 
                     {/* Main Weather Info */}
@@ -354,14 +379,16 @@ function HomePage() {
           {/* Section Header */}
           <div className="justify-start items-start mb-6 px-2 flex flex-col ">
             <div className="flex flex-row justify-center items-center gap-4">
-            <h3 className="text-[2rem] tracking-tighter text-center font-bold text-slate-800">
-              Weather Map
-            </h3>
-            <span className="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-              Live
-            </span>
+              <h3 className="text-[2rem] tracking-tighter text-center font-bold text-slate-800">
+                Weather Map
+              </h3>
+              <span className="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                Live
+              </span>
             </div>
-            <p className="text-[.8rem] text-gray-500">Powered by openweatherapi.org</p>
+            <p className="text-[.8rem] text-gray-500">
+              Powered by openweatherapi.org
+            </p>
           </div>
 
           {/* The Map Component */}
