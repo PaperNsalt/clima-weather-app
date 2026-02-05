@@ -108,7 +108,7 @@ function SearchBar({ onSearch }) {
           autoComplete="off"
         />
 
-        {/* Action Buttons */}
+        
         <div className="absolute right-2 flex items-center gap-1">
           <AnimatePresence>
             {city && (
@@ -140,7 +140,7 @@ function SearchBar({ onSearch }) {
         </div>
       </motion.form>
 
-      {/* --- SUGGESTIONS DROPDOWN --- */}
+ 
       <AnimatePresence>
         {suggestions.length > 0 && isFocused && (
           <motion.div

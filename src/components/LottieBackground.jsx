@@ -7,7 +7,7 @@ const LottieBackground = () => {
       <Lottie 
         animationData={animationData} 
         loop={true} 
-        // This makes the SVG act like object-fit: cover
+        
         rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
         className="w-full h-full"
         style={{ width: "100%", height: "100%" }} 

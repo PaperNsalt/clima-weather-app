@@ -14,10 +14,14 @@ function DailyForecastItem({ day, date, icon, maxTemp, minTemp, index }) {
       </div>
 
       <div className="flex items-center gap-4">
-        <img src={icon} alt="weather icon" className="w-10 h-10 object-contain" />
+        <img
+          src={icon}
+          alt="weather icon"
+          className="w-10 h-10 object-contain"
+        />
         <div className="flex flex-col items-end">
-           <span className="text-white font-bold text-xl">{maxTemp}°</span>
-           <span className="text-slate-400 text-sm">{minTemp}°</span>
+          <span className="text-white font-bold text-xl">{maxTemp}°</span>
+          <span className="text-slate-400 text-sm">{minTemp}°</span>
         </div>
       </div>
     </motion.div>

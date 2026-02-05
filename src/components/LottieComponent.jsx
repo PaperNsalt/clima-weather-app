@@ -8,7 +8,7 @@ function LottieComponent({ className }) {
         animationData={SharpUmbrellaAnimation}
         loop={true}
         autoPlay={true}
-        // This ensures the animation scales responsively
+      
         style={{ width: "100%", height: "auto", maxWidth: "500px" }} 
       />
     </div>

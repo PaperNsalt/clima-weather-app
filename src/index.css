@@ -43,21 +43,21 @@ html{
 } */
 
 .lottie-bg {
-  position: fixed; /* Keeps it in place when scrolling */
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: -1; /* Pushes it behind all other content */
-  overflow: hidden; /* Prevents scrollbars if animation is too big */
-  background-color: #f0f0f0; /* Optional: Fallback color */
-  pointer-events: none; /* Important: Allows you to click items "through" the animation */
+  z-index: -1; 
+  overflow: hidden; 
+  background-color: #f0f0f0; 
+  pointer-events: none; 
 }
 
 .lottie-player {
   width: 100%;
   height: 100%;
-  /* This mimics "object-fit: cover" for the animation */
+
   object-fit: cover; 
 }
 

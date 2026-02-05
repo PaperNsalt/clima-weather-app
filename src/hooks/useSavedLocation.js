@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export function useSavedLocations() {
-  // Initialize from LocalStorage
+  
   const [savedCities, setSavedCities] = useState(() => {
     try {
       const saved = localStorage.getItem("savedCities");
@@ -11,14 +11,14 @@ export function useSavedLocations() {
     }
   });
 
-  // Save to LocalStorage whenever state changes
+  
   useEffect(() => {
     localStorage.setItem("savedCities", JSON.stringify(savedCities));
   }, [savedCities]);
 
-  // Toggle Function (Add or Remove)
+
   const toggleCity = (cityName) => {
-    // Normalize string to avoid duplicates (e.g. "London" vs "london")
+  
     const exists = savedCities.some(
       (c) => c.toLowerCase() === cityName.toLowerCase()
     );
@@ -30,7 +30,7 @@ export function useSavedLocations() {
     }
   };
 
-  // Helper to check if current city is saved
+
   const isSaved = (cityName) => {
     if (!cityName) return false;
     return savedCities.some((c) => c.toLowerCase() === cityName.toLowerCase());

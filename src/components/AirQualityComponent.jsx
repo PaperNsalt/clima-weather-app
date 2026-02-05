@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { WindIcon } from "./IconComponent";
 
 function AirQualityComponent({ airQuality }) {
-  // ✅ SAFETY CHECK: If data is missing, return null or a loading state
+
   if (!airQuality) return null;
 
   const aqiIndex = airQuality["us-epa-index"] || 1;
-  // Use optional chaining (?.) just in case specific metrics are missing
+
   const pm2_5 = airQuality.pm2_5 ? Math.round(airQuality.pm2_5) : 0;
   const pm10 = airQuality.pm10 ? Math.round(airQuality.pm10) : 0;
 
@@ -38,7 +38,7 @@ function AirQualityComponent({ airQuality }) {
       transition={{ delay: 0.2 }}
       className="bg-white/60 p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row gap-8 items-center justify-between"
     >
-      {/* Left: Status */}
+    
       <div className="flex flex-col gap-2 flex-1 w-full text-center md:text-left">
         <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
           <div className={`p-2 rounded-full ${details.bg} ${details.color}`}>
@@ -55,7 +55,7 @@ function AirQualityComponent({ airQuality }) {
         </p>
       </div>
 
-      {/* Right: Metrics */}
+
       <div className="flex flex-row gap-4 w-full md:w-auto justify-center">
         <div className="bg-slate-50 p-4 md:p-6 rounded-2xl min-w-[120px] border border-slate-100 flex flex-col items-center md:items-start">
           <span className="text-slate-400 text-xs font-bold uppercase tracking-tighter mb-1">Fine Particles</span>

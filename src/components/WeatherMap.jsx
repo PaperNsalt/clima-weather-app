@@ -5,7 +5,7 @@ import L from "leaflet";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
-// --- 1. Fix Leaflet Default Icon ---
+
 let DefaultIcon = L.icon({
   iconUrl: icon,
   shadowUrl: iconShadow,
@@ -14,46 +14,45 @@ let DefaultIcon = L.icon({
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
-// --- 2. Configuration for Layers & Legends ---
+
 const LAYER_CONFIG = {
   temp_new: {
     name: "Temperature",
     color: "bg-orange-500",
-    opacity: 1,
+    opacity: 0.9,
     legendGradient: "linear-gradient(to right, #9c27b0, #2196f3, #009688, #8bc34a, #ffeb3b, #ff9800, #f44336)",
-    legendLabels: ["-40°", "0°", "20°", "40°+"] // Simplified labels for mobile
+    legendLabels: ["-40°", "0°", "20°", "40°+"]
   },
   precipitation_new: {
     name: "Rain Radar",
     color: "bg-blue-500",
-    opacity: 1,
+    opacity: 0.9,
     legendGradient: "linear-gradient(to right, rgba(0,0,0,0), #8A2BE2, #0000FF, #00FF00, #FFFF00, #FF7F00, #FF0000)",
     legendLabels: ["Light", "Med", "Heavy"]
   },
   clouds_new: {
     name: "Clouds",
     color: "bg-slate-600",
-    opacity: 1,
+    opacity: 0.8,
     legendGradient: "linear-gradient(to right, rgba(45,212,191,0.2), #0891B2, #083344)",
     legendLabels: ["Clear", "Cloudy", "Overcast"],
   },
   wind_new: {
     name: "Wind Speed",
     color: "bg-teal-500",
-    opacity: 1,
+    opacity: 0.8,
     legendGradient: "linear-gradient(to right, rgba(255,255,255,0), #9370DB, #4B0082, #FFFF00, #FF0000)",
     legendLabels: ["Calm", "Breezy", "Storm"]
   },
 };
 
-// --- 3. Helper to move map ---
 function ChangeView({ center }) {
   const map = useMap();
   map.setView(center, 10);
   return null;
 }
 
-// --- 4. The Legend Component ---
+
 function MapLegend({ activeLayer }) {
   const config = LAYER_CONFIG[activeLayer];
   
@@ -64,13 +63,13 @@ function MapLegend({ activeLayer }) {
           <span className="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-wider">{config.name}</span>
         </div>
         
-        {/* The Color Bar */}
+        
         <div 
           className="h-2 md:h-3 w-full rounded-full shadow-inner mb-2" 
           style={{ background: config.legendGradient }} 
         />
         
-        {/* The Labels */}
+        
         <div className="flex justify-between text-[8px] md:text-[10px] font-bold text-slate-500">
           {config.legendLabels.map((label, i) => (
             <span key={i}>{label}</span>
@@ -87,13 +86,10 @@ function WeatherMap({ lat, lon }) {
   const position = lat && lon ? [lat, lon] : [51.505, -0.09];
 
   return (
-    // Responsive Height: 350px on mobile, 500px on desktop
+
     <div className="relative h-[350px] md:h-[500px] w-full rounded-3xl overflow-hidden shadow-2xl border border-slate-200 z-0 bg-slate-100">
       
-      {/* --- RESPONSIVE LAYER SWITCHER --- 
-          Mobile: Horizontal scroll at top 
-          Desktop: Vertical list at right
-      */}
+
       <div className="absolute top-3 left-3 right-3 md:left-auto md:right-4 z-[999] flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 scrollbar-hide snap-x">
         {Object.keys(LAYER_CONFIG).map((key) => {
           const layer = LAYER_CONFIG[key];
@@ -122,18 +118,18 @@ function WeatherMap({ lat, lon }) {
       <MapContainer 
         center={position} 
         zoom={10} 
-        scrollWheelZoom={false} // Keeps page scroll smooth
+        scrollWheelZoom={false}
         className="h-full w-full z-0"
       >
         <ChangeView center={position} />
 
-        {/* Base Map - CartoDB Positron (Light) fits your aesthetic better than Dark Matter */}
+
         <TileLayer
           attribution='&copy; <a href="https://carto.com/">Carto</a>'
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         />
 
-        {/* Weather Overlay */}
+ 
         {API_KEY && (
           <TileLayer
             key={activeLayer}
@@ -142,7 +138,6 @@ function WeatherMap({ lat, lon }) {
           />
         )}
         
-        {/* Inject the Legend */}
         <MapLegend activeLayer={activeLayer} />
       </MapContainer>
     </div>
