@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
 
+import Footer from './components/Footer.jsx';
 import NavBar from './components/NavBar.jsx';
 import HomePage from '../src/pages/HomePage.jsx';
 import AboutPage from '../src/pages/AboutPage.jsx'
@@ -19,6 +20,7 @@ function App() {
         <Route  path='contact' element={<ContactPage />}/>
         <Route  path='settings' element={<SettingsPage />}/>
       </Routes>
+      <Footer/>
     </>
   )
 }
