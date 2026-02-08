@@ -27,7 +27,7 @@ function Footer() {
   };
 
   return (
-    <footer className="relative w-screen mt-20 ml-[calc(50%-50vw)] bg-slate-50 border-t border-slate-200 pt-8 pb-6 overflow-hidden shadow-inner">
+    <footer className=" w-[99vw] mt-20 ml-[calc(50%-50vw)] bg-slate-50 border-t border-slate-200 pt-8 pb-6 overflow-hidden shadow-inner">
       <div className="absolute top-0 left-0 -z-10 w-64 h-64 bg-blue-100/50 rounded-full blur-3xl opacity-40 -translate-x-1/2 -translate-y-1/2" />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8">
