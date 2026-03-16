@@ -6,10 +6,12 @@ import logo from "../assets/ClimaLogo.svg"; // Assuming you have this
 
 // A simple card for the images/visuals
 const VisualCard = ({ color = "bg-blue-100", children }) => (
-  <div className={`w-full aspect-video rounded-3xl ${color} border border-white/20 shadow-xl overflow-hidden flex items-center justify-center relative`}>
+  <div
+    className={`w-full aspect-video rounded-3xl ${color} border border-white/20 shadow-xl overflow-hidden flex items-center justify-center relative`}
+  >
     {children}
     {/* Decorative sheen */}
-    <div className="absolute inset-0 bg-gradient-to-tr from-white/40 to-transparent opacity-50" />
+    <div className="absolute inset-0 bg-linear-to-tr from-white/40 to-transparent opacity-50" />
   </div>
 );
 
@@ -25,11 +27,13 @@ function AboutPage() {
   });
 
   // Smooth out the drawing action so it doesn't jitter
-  const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 90 });
+  const pathLength = useSpring(scrollYProgress, {
+    stiffness: 400,
+    damping: 90,
+  });
 
   return (
     <div className=" min-h-screen pb-40 overflow-hidden">
-      
       {/* --- HERO HEADER --- */}
       <section className="relative pt-32 pb-20 flex flex-col items-center justify-center text-center px-4">
         <motion.div
@@ -44,14 +48,17 @@ function AboutPage() {
             About CLIMA
           </h1>
           <p className="max-w-xl text-slate-500 text-lg md:text-xl leading-relaxed mx-auto">
-            More than just a weather app. It's a journey into modern UI, accurate data, and seamless user experience.
+            More than just a weather app. It's a journey into modern UI,
+            accurate data, and seamless user experience.
           </p>
         </motion.div>
       </section>
 
       {/* --- TIMELINE CONTAINER --- */}
-      <div ref={containerRef} className="relative max-w-6xl mx-auto px-4 md:px-8">
-        
+      <div
+        ref={containerRef}
+        className="relative max-w-6xl mx-auto px-4 md:px-8"
+      >
         {/* ==================================================================
             THE CURLY LINE (SVG)
             This sits behind the content.
@@ -109,19 +116,23 @@ function AboutPage() {
         {/* --- SECTION 1: INTRODUCTION (Left Aligned) --- */}
         {/* The grid places text on left, image on right */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center mb-40 relative">
-          
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             className="flex flex-col items-start text-left"
           >
-            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md mb-6 text-2xl">🌤️</div>
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md mb-6 text-2xl">
+              🌤️
+            </div>
             <h2 className="text-4xl font-bold tracking-tight text-slate-800 mb-4">
               Real-time Precision
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed">
-              CLIMA is a modern web-based weather application designed to deliver accurate, real-time weather information through a clean and user-friendly interface. By leveraging reliable weather APIs, we help you plan your day with confidence.
+              CLIMA is a modern web-based weather application designed to
+              deliver accurate, real-time weather information through a clean
+              and user-friendly interface. By leveraging reliable weather APIs,
+              we help you plan your day with confidence.
             </p>
           </motion.div>
 
@@ -133,7 +144,7 @@ function AboutPage() {
             className="md:pl-10"
           >
             <VisualCard color="bg-[#4A90E2]">
-               <h3 className="text-white font-bold text-3xl">Clean UI</h3>
+              <h3 className="text-white font-bold text-3xl">Clean UI</h3>
             </VisualCard>
           </motion.div>
         </div>
@@ -141,16 +152,15 @@ function AboutPage() {
         {/* --- SECTION 2: PURPOSE (Right Aligned) --- */}
         {/* The grid places image on left, text on right */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center mb-40 relative">
-          
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="order-2 md:order-1 md:pr-10"
           >
-             <VisualCard color="bg-slate-800">
-                <span className="text-6xl">🌍</span>
-             </VisualCard>
+            <VisualCard color="bg-slate-800">
+              <span className="text-6xl">🌍</span>
+            </VisualCard>
           </motion.div>
 
           <motion.div
@@ -159,39 +169,46 @@ function AboutPage() {
             viewport={{ once: true, margin: "-100px" }}
             className="order-1 md:order-2 flex flex-col items-start text-left"
           >
-            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md mb-6 text-2xl">🎯</div>
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md mb-6 text-2xl">
+              🎯
+            </div>
             <h2 className="text-4xl font-bold tracking-tight text-slate-800 mb-4">
               Purpose Driven
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed">
-              The goal is to provide an accessible platform that enables users to visualize weather patterns. We aim to help users make informed decisions for daily activities and travel while showcasing modern frontend capabilities.
+              The goal is to provide an accessible platform that enables users
+              to visualize weather patterns. We aim to help users make informed
+              decisions for daily activities and travel while showcasing modern
+              frontend capabilities.
             </p>
           </motion.div>
         </div>
 
         {/* --- SECTION 3: TECH STACK (Left Aligned - NEW CONTENT) --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center relative pb-20">
-          
           <motion.div
-             initial={{ opacity: 0, x: -50 }}
-             whileInView={{ opacity: 1, x: 0 }}
-             viewport={{ once: true, margin: "-100px" }}
-             className="flex flex-col items-start text-left"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="flex flex-col items-start text-left"
           >
-            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md mb-6 text-2xl">⚡</div>
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md mb-6 text-2xl">
+              ⚡
+            </div>
             <h2 className="text-4xl font-bold tracking-tight text-slate-800 mb-4">
               Built with Speed
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-6">
-              We utilized the latest web technologies to ensure a snappy, responsive experience.
+              We utilized the latest web technologies to ensure a snappy,
+              responsive experience.
             </p>
-            
+
             <ul className="space-y-3">
               {[
                 "React & React Router",
                 "Tailwind CSS for Styling",
                 "Framer Motion for Animation",
-                "OpenWeatherMap API"
+                "OpenWeatherMap API",
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#4A90E2]" />
@@ -209,25 +226,24 @@ function AboutPage() {
           >
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center gap-2">
-                 <div className="w-10 h-10 rounded-full bg-blue-100" />
-                 <span className="font-bold text-slate-700">React</span>
+                <div className="w-10 h-10 rounded-full bg-blue-100" />
+                <span className="font-bold text-slate-700">React</span>
               </div>
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center gap-2">
-                 <div className="w-10 h-10 rounded-full bg-cyan-100" />
-                 <span className="font-bold text-slate-700">Tailwind</span>
+                <div className="w-10 h-10 rounded-full bg-cyan-100" />
+                <span className="font-bold text-slate-700">Tailwind</span>
               </div>
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center gap-2">
-                 <div className="w-10 h-10 rounded-full bg-purple-100" />
-                 <span className="font-bold text-slate-700">Framer</span>
+                <div className="w-10 h-10 rounded-full bg-purple-100" />
+                <span className="font-bold text-slate-700">Framer</span>
               </div>
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center gap-2">
-                 <div className="w-10 h-10 rounded-full bg-orange-100" />
-                 <span className="font-bold text-slate-700">API</span>
+                <div className="w-10 h-10 rounded-full bg-orange-100" />
+                <span className="font-bold text-slate-700">API</span>
               </div>
             </div>
           </motion.div>
         </div>
-
       </div>
     </div>
   );

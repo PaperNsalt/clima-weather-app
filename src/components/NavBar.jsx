@@ -155,7 +155,7 @@ function NavBar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-[100] bg-white/70 backdrop-blur-xl border-b border-white/40 shadow-sm transition-all">
+      <header className="fixed top-0 left-0 w-full z-100 bg-white/70 backdrop-blur-xl border-b border-white/40 shadow-sm transition-all">
         <nav className="flex justify-between items-center max-w-7xl mx-auto py-3 px-4 md:px-8">
           {/* LOGO */}
           <div className="shrink-0 z-50">
