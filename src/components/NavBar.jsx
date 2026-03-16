@@ -75,7 +75,6 @@ const NAV_CONFIG = [
   { label: "HOME", path: "/", icon: <BentoGridIcon /> },
   { label: "ABOUT", path: "/about", icon: <UserIcon /> },
   { label: "CONTACT", path: "/contact", icon: <MailIcon /> },
-  { label: "SETTINGS", path: "/settings", icon: <SettingsIcon /> },
 ];
 
 const menuVariants = {
